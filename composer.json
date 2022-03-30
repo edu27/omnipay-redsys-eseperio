@@ -20,7 +20,7 @@
     "php": ">=5.6",
     "omnipay/common": "3.*",
     "redsys/messages": "*",
-    "guzzlehttp/psr7": "^1.4",
+    "guzzlehttp/psr7": "^1.4"
   },
   "autoload": {
     "psr-4": {
