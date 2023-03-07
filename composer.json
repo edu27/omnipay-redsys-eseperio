@@ -1,7 +1,7 @@
 {
   "name": "eseperio/omnipay-redsys",
   "description": "Redsys (Credit card + Bizum)  payment gateway for the Omnipay PHP payment processing library",
-  "license": "GPLv2",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "E. Alamo",
@@ -23,7 +23,7 @@
   "require": {
     "php": ">=5.6",
     "omnipay/common": "3.*",
-    "redsys/messages": "*",
+    "redsys/messages": "^1.0",
     "guzzlehttp/psr7": "^1.4"
   },
   "autoload": {
