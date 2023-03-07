@@ -40,12 +40,12 @@ Create a gateway instance for RedSys:
 $gateway = Omnipay::create('Sermepa');
 ```
 
-Now define all the parameters for the purchase request:
+Now define all the parameters needed by the gateway:
 
 ```php
 $gateway->setMerchantCode('my_merchant_code');
 $gateway->setMerchantKey('my_merchant_key');
-$gateway->setTransactionType('my_transaction_type');
+$gateway->setTransactionType(\Omnipay\Redsys\Dictionaries\TransactionTypes::AUTHORIZATION);
 $gateway->setCurrency('my_currency');
 $gateway->setCancelUrl('my_cancel_url');
 $gateway->setReturnUrl('my_return_url');
@@ -57,15 +57,45 @@ $gateway->setConsumerLanguage(0);
 $gateway->setTerminal('my_terminal');
 ```
 
-> **Important**: Redsys expects the amount to be an integer, where the last 2 digits are decimals.
+`setMerchantUrl` is the url where the gateway will send the response of the transaction. This url must be accessible
 
-To convert the amount to an integer you can use the following code:
+Next, create a request, which can be either a purchase (common) or an authorize request:
 
 ```php
-number_format($amount, 2, '', '');
+$request = $gateway->purchase()
+            ->setTitular('my_company_name')
+            ->setAmount('my_total_amount')
+            ->setTransactionId('my_transaction_id')
+            ->setOrder('my_order_id')
+            ->setTransactionReference('my_transaction_reference')
+            ->setDescription('my_order_description');
+    ],
+]);
 ```
 
+> **Important**: Redsys expects the transactionId to be an integer, and the amount to be an integer where the last 2
+> digits are decimals.
 
+Omnipay has many methods to set the amount, but this library has the method setAmount overrided to ensure that the
+amount is
+an integer and the last 2 digits are decimals.
+
+## Receiving the payment response
+
+Now, on the route you provided as `merchantUrl` you can receive the response from Redsys:
+
+```php 
+$gateway = Omnipay::create('Sermepa');
+$response = $gateway->completePurchase()->send();
+if($response->isSuccessful()){
+    // The payment was successful
+    // Confirm your order or other stuff
+    
+    $orderId = $response->getTransactionId();
+    
+    // ...
+}
+```
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.

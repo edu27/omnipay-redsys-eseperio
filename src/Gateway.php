@@ -177,7 +177,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     * @return \Omnipay\Redsys\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
      */
     public function authorize(array $parameters = array())
     {
@@ -186,7 +186,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     * @return \Omnipay\Redsys\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
      */
     public function completeAuthorize(array $parameters = array())
     {
