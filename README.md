@@ -77,8 +77,10 @@ $request = $gateway->purchase()
 > digits are decimals.
 
 Omnipay has many methods to set the amount, but this library has the method setAmount overrided to ensure that the
-amount is
-an integer and the last 2 digits are decimals.
+amount is an integer and the last 2 digits are decimals.
+
+When you use `setAmount()`, the amount is formatted with `number_format($amount, 2, '', '')`.
+You still can use [`setAmountInteger()`](https://github.com/thephpleague/omnipay-common/blob/e1ebc22615f14219d31cefdf62d7036feb228b1c/src/Common/Message/AbstractRequest.php#L355) to set the amount as an integer.
 
 ## Receiving the payment response
 
@@ -97,7 +99,19 @@ if($response->isSuccessful()){
 }
 ```
 
-For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
+### Using BIZUM
+
+All the params are shared between card and bizum, so you can use the same gateway instance to create a bizum request.
+The only difference is the payment method:
+
+```php
+// Set the payment method to BIZUM
+$gateway->setMerchantPaymethod(PayMethods::PAY_METHOD_BIZUM);
+// Bizum is only compatible with AUTHORIZATION transactions
+$gateway->setTransactionType(TransactionTypes::AUTHORIZATION);
+```
+
+For other general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
 
 
@@ -108,12 +122,6 @@ Changes for use with Omnipay 3.0
 
 - Currency: Use the code of ISO-4217 (https://en.wikipedia.org/wiki/ISO_4217#Active_codes) instead a number. ('
   EUR' => '978')
-
-Additional Parameter
------------
-
-If you want to avoid having to multiply the value by 100 just add a new parameter ( multiply=true ) to the purchase
-function.
 
 Additional Callback
 -----------
