@@ -2,9 +2,12 @@
 
 namespace Omnipay\Sermepa;
 
-use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Sermepa\Dictionaries\PayMethods;
+use Omnipay\Sermepa\Dictionaries\TransactionTypes;
+use Omnipay\Sermepa\Exception\BadPayMethodException;
 use Omnipay\Sermepa\Message\CallbackResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Sermepa (Redsys) Gateway
@@ -14,6 +17,8 @@ use Omnipay\Sermepa\Message\CallbackResponse;
  */
 class Gateway extends AbstractGateway
 {
+
+
     /**
      * @return array
      */
@@ -26,9 +31,10 @@ class Gateway extends AbstractGateway
             'terminal' => '001',
             'merchantURL' => '',
             'merchantName' => '',
-            'transactionType' => '0',
+            'transactionType' => TransactionTypes::AUTHORIZATION,
             'signatureMode' => 'simple',
-            'testMode' => false
+            'testMode' => false,
+            'payMethod' => PayMethods::PAY_METHOD_CARD,
         ];
     }
 
@@ -38,6 +44,44 @@ class Gateway extends AbstractGateway
     public function setMerchantName($merchantName)
     {
         $this->setParameter('merchantName', $merchantName);
+    }
+
+
+    /**
+     * @param $merchantPaymethod int a value from PayMethods
+     * @return void
+     * @throws \Omnipay\Sermepa\Exception\BadPayMethodException
+     * @see PayMethods
+     */
+    public function setMerchantPaymethod($merchantPaymethod)
+    {
+        $supported = PayMethods::supportedOperationTypes();
+        if (!isset($supported[$merchantPaymethod])) {
+            throw new BadPayMethodException($merchantPaymethod);
+        }
+        $transType = $this->getParameter('transactionType');
+
+        if (is_array($supported[$merchantPaymethod]) && !in_array($transType, $supported[$merchantPaymethod])) {
+            throw new BadPayMethodException($merchantPaymethod, $transType);
+        }
+        $this->setParameter('merchantPaymethod', $merchantPaymethod);
+    }
+
+    /**
+     * @param $transactionType
+     * @return void
+     * @throws \Omnipay\Sermepa\Exception\BadPayMethodException
+     */
+    public function setTransactionType($transactionType)
+    {
+        $payMethod = $this->getParameter('merchantPaymethod');
+        if ($payMethod) {
+            $supported = PayMethods::supportedOperationTypes();
+            if (is_array($supported[$payMethod]) && !in_array($transactionType, $supported[$payMethod])) {
+                throw new BadPayMethodException($payMethod, $transactionType);
+            }
+        }
+        $this->setParameter('transactionType', $transactionType);
     }
 
     /**
