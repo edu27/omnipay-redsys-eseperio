@@ -129,6 +129,15 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
+     * @param $paymentMethods
+     * @return \Omnipay\Sermepa\Message\PurchaseRequest
+     */
+    public function setMerchantPaymethods($paymentMethods)
+    {
+        return $this->setParameter('paymentMethods', $paymentMethods);
+    }
+
+    /**
      * @return array|mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
@@ -155,9 +164,8 @@ class PurchaseRequest extends AbstractRequest
         if (!empty($this->getParameter('identifier'))) {
             $data['Ds_Merchant_Identifier'] = $this->getParameter('identifier');
         }
-        if (!empty($this->getParameter('merchantPaymethods'))) {
-            $data['Ds_Merchant_PayMethods'] = $this->getParameter('merchantPaymethods');
-            die(var_dump($data['Ds_Merchant_PayMethods']));
+        if (!empty($this->getParameter('paymentMethods'))) {
+            $data['Ds_Merchant_PayMethods'] = $this->getParameter('paymentMethods');
         }
 
         $merchantParameters = base64_encode(json_encode($data));

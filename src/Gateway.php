@@ -195,7 +195,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     * @return \Omnipay\Sermepa\Message\PurchaseRequest|\Omnipay\Sermepa\Message\RecurrentPurchaseRequest
      */
     public function purchase(array $parameters = array())
     {
