@@ -34,7 +34,7 @@ class Gateway extends AbstractGateway
             'transactionType' => TransactionTypes::AUTHORIZATION,
             'signatureMode' => 'simple',
             'testMode' => false,
-            'payMethod' => PayMethods::PAY_METHOD_CARD,
+            'payMethods' => PayMethods::PAY_METHOD_CARD,
         ];
     }
 
@@ -64,7 +64,7 @@ class Gateway extends AbstractGateway
         if (is_array($supported[$merchantPaymethod]) && !in_array($transType, $supported[$merchantPaymethod])) {
             throw new BadPayMethodException($merchantPaymethod, $transType);
         }
-        $this->setParameter('merchantPaymethod', $merchantPaymethod);
+        $this->setParameter('merchantPaymethods', $merchantPaymethod);
     }
 
     /**

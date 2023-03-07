@@ -2,6 +2,8 @@
 
 namespace Omnipay\Sermepa\Message;
 
+use Omnipay\Sermepa\Dictionaries\TransactionTypes;
+
 /**
  * Sermepa (Redsys) Authorize Request
  *
@@ -11,6 +13,6 @@ class AuthorizeRequest extends PurchaseRequest
 {
     public function getTransactionType()
     {
-        return '1';
+        return TransactionTypes::PREAUTHORIZATION;
     }
 }
