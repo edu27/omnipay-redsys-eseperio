@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sermepa\Dictionaries;
+namespace Omnipay\Redsys\Dictionaries;
 
 class PayMethods
 {

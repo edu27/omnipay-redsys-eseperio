@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sermepa\Exception;
+namespace Omnipay\Redsys\Exception;
 
 /**
  * Description of CallbackException

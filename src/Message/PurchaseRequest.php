@@ -1,15 +1,16 @@
 <?php
 
-namespace Omnipay\Sermepa\Message;
+namespace Omnipay\Redsys\Message;
 
 use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\Sermepa\Encryptor\Encryptor;
+use Omnipay\Redsys\Encryptor\Encryptor;
 
 /**
- * Sermepa (Redsys) Purchase Request
+ * Redsys Purchase Request
  *
+ * @author E. Alamo https://github.com/Eseperio
  * @author Javier Sampedro <jsampedro77@gmail.com>
  * @author NitsNets Studio <github@nitsnets.com>
  */
@@ -122,15 +123,17 @@ class PurchaseRequest extends AbstractRequest
     /**
      * @param $multiply
      * @return PurchaseRequest
+     * @deprecated
      */
     public function setMultiply($multiply)
     {
+        trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
         return $this->setParameter('multiply', $multiply);
     }
 
     /**
      * @param $paymentMethods
-     * @return \Omnipay\Sermepa\Message\PurchaseRequest
+     * @return \Omnipay\Redsys\Message\PurchaseRequest
      */
     public function setMerchantPaymethods($paymentMethods)
     {

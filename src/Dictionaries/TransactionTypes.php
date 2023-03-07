@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sermepa\Dictionaries;
+namespace Omnipay\Redsys\Dictionaries;
 /**
  * Types of transactions supported by sermepa
  * @author eseperio

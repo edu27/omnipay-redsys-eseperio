@@ -1,8 +1,8 @@
 <?php
 
-namespace Omnipay\Sermepa\Message;
+namespace Omnipay\Redsys\Message;
 
-use Omnipay\Sermepa\Dictionaries\TransactionTypes;
+use Omnipay\Redsys\Dictionaries\TransactionTypes;
 
 /**
  * Sermepa (Redsys) Authorize Request

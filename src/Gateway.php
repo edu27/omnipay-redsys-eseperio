@@ -1,12 +1,12 @@
 <?php
 
-namespace Omnipay\Sermepa;
+namespace Omnipay\Redsys;
 
 use Omnipay\Common\AbstractGateway;
-use Omnipay\Sermepa\Dictionaries\PayMethods;
-use Omnipay\Sermepa\Dictionaries\TransactionTypes;
-use Omnipay\Sermepa\Exception\BadPayMethodException;
-use Omnipay\Sermepa\Message\CallbackResponse;
+use Omnipay\Redsys\Dictionaries\PayMethods;
+use Omnipay\Redsys\Dictionaries\TransactionTypes;
+use Omnipay\Redsys\Exception\BadPayMethodException;
+use Omnipay\Redsys\Message\CallbackResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -50,7 +50,7 @@ class Gateway extends AbstractGateway
     /**
      * @param $merchantPaymethod int a value from PayMethods
      * @return void
-     * @throws \Omnipay\Sermepa\Exception\BadPayMethodException
+     * @throws \Omnipay\Redsys\Exception\BadPayMethodException
      * @see PayMethods
      */
     public function setMerchantPaymethod($merchantPaymethod)
@@ -70,7 +70,7 @@ class Gateway extends AbstractGateway
     /**
      * @param $transactionType
      * @return void
-     * @throws \Omnipay\Sermepa\Exception\BadPayMethodException
+     * @throws \Omnipay\Redsys\Exception\BadPayMethodException
      */
     public function setTransactionType($transactionType)
     {
@@ -181,7 +181,7 @@ class Gateway extends AbstractGateway
      */
     public function authorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sermepa\Message\AuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\Redsys\Message\AuthorizeRequest', $parameters);
     }
 
     /**
@@ -190,19 +190,19 @@ class Gateway extends AbstractGateway
      */
     public function completeAuthorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sermepa\Message\CompleteAuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\Redsys\Message\CompleteAuthorizeRequest', $parameters);
     }
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Sermepa\Message\PurchaseRequest|\Omnipay\Sermepa\Message\RecurrentPurchaseRequest
+     * @return \Omnipay\Redsys\Message\PurchaseRequest|\Omnipay\Redsys\Message\RecurrentPurchaseRequest
      */
     public function purchase(array $parameters = array())
     {
         if (isset($parameters['recurrent']) && $parameters['recurrent']) {
-            return $this->createRequest('\Omnipay\Sermepa\Message\RecurrentPurchaseRequest', $parameters);
+            return $this->createRequest('\Omnipay\Redsys\Message\RecurrentPurchaseRequest', $parameters);
         } else {
-            return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
+            return $this->createRequest('\Omnipay\Redsys\Message\PurchaseRequest', $parameters);
         }
     }
 
@@ -212,7 +212,7 @@ class Gateway extends AbstractGateway
      */
     public function completePurchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sermepa\Message\CompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Redsys\Message\CompletePurchaseRequest', $parameters);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sermepa\Encryptor;
+namespace Omnipay\Redsys\Encryptor;
 
 class Encryptor
 {

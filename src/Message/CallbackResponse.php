@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnipay\Sermepa\Message;
+namespace Omnipay\Redsys\Message;
 
-use Omnipay\Sermepa\Encryptor\Encryptor;
+use Omnipay\Redsys\Encryptor\Encryptor;
 use Symfony\Component\HttpFoundation\Request;
-use Omnipay\Sermepa\Exception\BadSignatureException;
-use Omnipay\Sermepa\Exception\CallbackException;
+use Omnipay\Redsys\Exception\BadSignatureException;
+use Omnipay\Redsys\Exception\CallbackException;
 
 /**
  * Sermepa (Redsys)  Callback Response

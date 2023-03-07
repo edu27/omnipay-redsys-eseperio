@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Sermepa\Message;
+namespace Omnipay\Redsys\Message;
 
 /**
  * Sermepa (Redsys) Recurrent Purchase Request

@@ -1,9 +1,13 @@
 {
-  "name": "nazka/sermepa-omnipay",
-  "type": "symfony-bundle",
-  "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
+  "name": "eseperio/omnipay-redsys",
+  "description": "Redsys (Credit card + Bizum)  payment gateway for the Omnipay PHP payment processing library",
   "license": "GPLv2",
   "authors": [
+    {
+      "name": "E. Alamo",
+      "email": "erosdelalamo@gmail.com",
+      "homepage": "https://github.com/Eseperio"
+    },
     {
       "name": "Javier Sampedro",
       "email": "jsampedro77@gmail.com",
@@ -24,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Omnipay\\Sermepa\\": "src/"
+      "Omnipay\\Redsys\\": "src/"
     }
   },
   "extra": {
