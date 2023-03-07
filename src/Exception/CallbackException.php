@@ -9,5 +9,5 @@ namespace Omnipay\Redsys\Exception;
  */
 class CallbackException extends \Exception
 {
-    protected $message = 'Sermepa callback returned an error status code';
+    protected $message = 'Redsys callback returned an error status code';
 }

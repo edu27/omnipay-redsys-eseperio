@@ -8,7 +8,7 @@ use Omnipay\Redsys\Exception\BadSignatureException;
 use Omnipay\Redsys\Exception\CallbackException;
 
 /**
- * Sermepa (Redsys)  Callback Response
+ * Redsys  Callback Response
  */
 class CallbackResponse
 {

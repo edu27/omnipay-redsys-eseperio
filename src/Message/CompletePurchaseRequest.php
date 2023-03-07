@@ -7,7 +7,7 @@ use Omnipay\Redsys\Encryptor\Encryptor;
 use Omnipay\Redsys\Exception\BadSignatureException;
 
 /**
- * Sermepa (Redsys) Complete Purchase Request
+ * Redsys Complete Purchase Request
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {

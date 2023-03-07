@@ -2,8 +2,8 @@
 
 namespace Omnipay\Redsys\Dictionaries;
 /**
- * Types of transactions supported by sermepa
- * @author eseperio
+ * Types of transactions supported by Redsys
+ * @author E. Alamo https://github.com/Eseperio
  */
 class TransactionTypes
 {

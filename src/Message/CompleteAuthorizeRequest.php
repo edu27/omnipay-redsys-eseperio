@@ -3,7 +3,7 @@
 namespace Omnipay\Redsys\Message;
 
 /**
- * Sermepa (Redsys) Complete Authorize Request
+ * Redsys Complete Authorize Request
  */
 class CompleteAuthorizeRequest extends CompletePurchaseRequest
 {

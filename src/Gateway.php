@@ -10,7 +10,7 @@ use Omnipay\Redsys\Message\CallbackResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Sermepa (Redsys) Gateway
+ * Redsys Gateway
  *
  * @author Javier Sampedro <jsampedro77@gmail.com>
  * @author NitsNets Studio <github@nitsnets.com>
@@ -172,7 +172,7 @@ class Gateway extends AbstractGateway
      */
     public function getName()
     {
-        return 'Sermepa';
+        return 'Redsys';
     }
 
     /**

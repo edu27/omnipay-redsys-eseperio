@@ -6,7 +6,7 @@ use Omnipay\Common\Message\AbstractResponse;
 use Redsys\Messages\Messages;
 
 /**
- * Sermepa (Redsys) Complete Purchase Response
+ * Redsys Complete Purchase Response
  */
 class CompletePurchaseResponse extends AbstractResponse
 {
