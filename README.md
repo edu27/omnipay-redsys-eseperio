@@ -50,9 +50,6 @@ $gateway->setMerchantCode('my_merchant_code');
 $gateway->setMerchantKey('my_merchant_key');
 $gateway->setTransactionType(\Omnipay\Redsys\Dictionaries\TransactionTypes::AUTHORIZATION);
 $gateway->setCurrency('my_currency');
-$gateway->setCancelUrl('my_cancel_url');
-$gateway->setReturnUrl('my_return_url');
-$gateway->setMerchantUrl('my_merchant_url');
 $gateway->setMerchantName('my_shop_name');
 $gateway->setMerchantPaymethod('my_pay_method');
 $gateway->setSignatureMode('my_signature_mode');
@@ -66,6 +63,11 @@ Next, create a request, which can be either a purchase (common) or an authorize 
 
 ```php
 $request = $gateway->purchase()
+            // Define the urls
+            ->setCancelUrl('my_cancel_url')
+            ->setReturnUrl('my_return_url')
+            ->setMerchantUrl('my_merchant_url')
+            // Define the transaction
             ->setTitular('my_company_name')
             ->setAmount('my_total_amount')
             ->setTransactionId('my_transaction_id')

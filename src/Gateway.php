@@ -102,6 +102,8 @@ class Gateway extends AbstractGateway
 
     /**
      * @param $merchantURL
+     * @see \Omnipay\Redsys\Message\PurchaseRequest::setMerchantURL()
+     * @deprecated merchantName must be defined in paymentRequest, not in gateway
      */
     public function setMerchantURL($merchantURL)
     {
@@ -125,7 +127,9 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * @deprecated this must be defined in paymentRequest, not in gateway. Only affects to purchase requests
      * @param $consumerLanguage
+     * @see PurchaseRequest::setConsumerLanguage()
      */
     public function setConsumerLanguage($consumerLanguage)
     {
@@ -134,6 +138,8 @@ class Gateway extends AbstractGateway
 
     /**
      * @param $returnUrl
+     * @deprecated returnUrl must be defined in paymentRequest, not in gateway
+     * @see \Omnipay\Redsys\Message\PurchaseRequest::setReturnUrl()
      */
     public function setReturnUrl($returnUrl)
     {
@@ -142,6 +148,8 @@ class Gateway extends AbstractGateway
 
     /**
      * @param $cancelUrl
+     * @see \Omnipay\Redsys\Message\PurchaseRequest::setCancelUrl()
+     * @deprecated returnUrl must be defined in paymentRequest, not in gateway
      */
     public function setCancelUrl($cancelUrl)
     {
