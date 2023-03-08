@@ -48,26 +48,6 @@ class Gateway extends AbstractGateway
 
 
     /**
-     * @param $merchantPaymethod int a value from PayMethods
-     * @return void
-     * @throws \Omnipay\Redsys\Exception\BadPayMethodException
-     * @see PayMethods
-     */
-    public function setMerchantPaymethod($merchantPaymethod)
-    {
-        $supported = PayMethods::supportedOperationTypes();
-        if (!isset($supported[$merchantPaymethod])) {
-            throw new BadPayMethodException($merchantPaymethod);
-        }
-        $transType = $this->getParameter('transactionType');
-
-        if (is_array($supported[$merchantPaymethod]) && !in_array($transType, $supported[$merchantPaymethod])) {
-            throw new BadPayMethodException($merchantPaymethod, $transType);
-        }
-        $this->setParameter('merchantPaymethods', $merchantPaymethod);
-    }
-
-    /**
      * @param $transactionType
      * @return void
      * @throws \Omnipay\Redsys\Exception\BadPayMethodException
@@ -203,15 +183,11 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Redsys\Message\PurchaseRequest|\Omnipay\Redsys\Message\RecurrentPurchaseRequest
+     * @return \Omnipay\Redsys\Message\PurchaseRequest
      */
     public function purchase(array $parameters = array())
     {
-        if (isset($parameters['recurrent']) && $parameters['recurrent']) {
-            return $this->createRequest('\Omnipay\Redsys\Message\RecurrentPurchaseRequest', $parameters);
-        } else {
             return $this->createRequest('\Omnipay\Redsys\Message\PurchaseRequest', $parameters);
-        }
     }
 
     /**
