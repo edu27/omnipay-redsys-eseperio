@@ -10,7 +10,7 @@ This is an improved version of the original package by [nazka](nazka/sermepa-omn
 years
 ago.
 
-This package features:
+#### This package features:
 
 - Support for Omnipay 3.X
 - Support for Redsys 3DS2
@@ -20,6 +20,8 @@ This package features:
 - Transaction compatibility with payment method is checked to ensure validity of request
 - JSON dictionary with all error codes
 - Better docs and how it works explanations
+- Dictionary with all languages supported by Redsys
+
 
 Installation
 ------------
@@ -73,7 +75,11 @@ $request = $gateway->purchase()
             ->setTransactionId('my_transaction_id')
             ->setOrder('my_order_id')
             ->setTransactionReference('my_transaction_reference')
-            ->setDescription('my_order_description');
+            ->setDescription('my_order_description')
+            
+            // Optional. 
+            ->setConsumerLanguage(\Omnipay\Redsys\Dictionaries\Languages::SPANISH);
+
     ],
 ]);
 ```
