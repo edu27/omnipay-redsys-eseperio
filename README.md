@@ -22,7 +22,6 @@ ago.
 - Better docs and how it works explanations
 - Dictionary with all languages supported by Redsys
 
-
 Installation
 ------------
 
@@ -36,6 +35,11 @@ composer require eseperio/omnipay-redsys
 
 In order to understand the code included within this library, you should check the docs
 page [how it works](docs/how-it-works.md)
+
+### List of errors
+
+Redsys has a list of errors that can be returned by the gateway. You can find the list of
+errors [here](docs/error-codes.md). Also the whole list is available in JSON format [here](src/utils/error-codes.json)
 
 Basic Usage
 -----------
@@ -137,8 +141,4 @@ Changes for use with Omnipay 3.0
 - Currency: Use the code of ISO-4217 (https://en.wikipedia.org/wiki/ISO_4217#Active_codes) instead a number. ('
   EUR' => '978')
 
-Additional Callback
------------
-Redsys has an additional callback ( Respuesta online ) that may be active in your redsys platform and therefore must be
-implemented. This new callback cannot follow the normal usage of Omnipay.
-You need to implement checkCallbackResponse() and decodeCallbackResponse().
+
