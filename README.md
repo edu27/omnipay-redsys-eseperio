@@ -46,7 +46,7 @@ Basic Usage
 Create a gateway instance for RedSys:
 
 ```php
-$gateway = Omnipay::create('Sermepa');
+$gateway = Omnipay::create('Redsys');
 ```
 
 Now define all the parameters needed by the gateway:
