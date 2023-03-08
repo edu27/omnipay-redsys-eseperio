@@ -6,6 +6,7 @@ use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Redsys\Dictionaries\PayMethods;
+use Omnipay\Redsys\Dictionaries\TransactionTypes;
 use Omnipay\Redsys\Encryptor\Encryptor;
 use Omnipay\Redsys\Exception\BadPayMethodException;
 
@@ -32,7 +33,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @param $merchantPaymethod int a value from PayMethods
-     * @return void
+     * @return \Omnipay\Redsys\Message\PurchaseRequest
      * @throws \Omnipay\Redsys\Exception\BadPayMethodException
      * @see PayMethods
      */
@@ -47,8 +48,9 @@ class PurchaseRequest extends AbstractRequest
         if (is_array($supported[$merchantPaymethod]) && !in_array($transType, $supported[$merchantPaymethod])) {
             throw new BadPayMethodException();
         }
-        $this->setParameter('merchantPaymethods', $merchantPaymethod);
+        return $this->setParameter('merchantPaymethods', $merchantPaymethod);
     }
+
     /**
      * @param $titular
      * @return PurchaseRequest
@@ -232,7 +234,10 @@ class PurchaseRequest extends AbstractRequest
     public function getTransactionType()
     {
         $transactionType = $this->getParameter('transactionType');
-        return '0';
+        if (empty($transactionType)) {
+            $transactionType = TransactionTypes::AUTHORIZATION;
+        }
+        return $transactionType;
     }
 
     /**

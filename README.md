@@ -124,7 +124,7 @@ The only difference is the payment method:
 
 ```php
 // Set the payment method to BIZUM
-$gateway->setMerchantPaymethod(PayMethods::PAY_METHOD_BIZUM);
+$request->setPayMethod(PayMethods::PAY_METHOD_BIZUM);
 // Bizum is only compatible with AUTHORIZATION transactions
 $gateway->setTransactionType(TransactionTypes::AUTHORIZATION);
 ```
