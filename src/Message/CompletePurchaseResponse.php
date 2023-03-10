@@ -22,20 +22,22 @@ class CompletePurchaseResponse extends AbstractResponse
         }
     }
 
+
+
     /**
      * @return string
      */
     public function getMessage()
     {
-        $messageData = Messages::getByCode($this->data['decodedParameters']['Ds_Response']);
+        $messageData = Messages::getByCode($this->getCode());
 
         if ($messageData) {
-            $message = $messageData['code']. ' - ' . $messageData['message'];
+            $message = $messageData['code'] . ' - ' . $messageData['message'];
             if ($messageData['detail']) {
-                $message .= '. '. $messageData['detail'];
+                $message .= '. ' . $messageData['detail'];
             }
         } else {
-            $message = $this->data['decodedParameters']['Ds_Response'];
+            $message = $this->getCode();
         }
 
         return $message;
@@ -56,7 +58,7 @@ class CompletePurchaseResponse extends AbstractResponse
     {
         return $this->data['decodedParameters']['Ds_AuthorisationCode'];
     }
-    
+
     /**
      * @return string
      */
