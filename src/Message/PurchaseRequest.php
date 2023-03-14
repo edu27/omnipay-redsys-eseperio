@@ -48,7 +48,7 @@ class PurchaseRequest extends AbstractRequest
         if (is_array($supported[$merchantPaymethod]) && !in_array($transType, $supported[$merchantPaymethod])) {
             throw new BadPayMethodException();
         }
-        return $this->setParameter('merchantPaymethods', $merchantPaymethod);
+        return $this->setParameter('paymentMethods', $merchantPaymethod);
     }
 
     /**
@@ -154,14 +154,7 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('multiply', $multiply);
     }
 
-    /**
-     * @param $paymentMethods
-     * @return \Omnipay\Redsys\Message\PurchaseRequest
-     */
-    public function setMerchantPaymethods($paymentMethods)
-    {
-        return $this->setParameter('paymentMethods', $paymentMethods);
-    }
+
 
     /**
      * @return array|mixed
