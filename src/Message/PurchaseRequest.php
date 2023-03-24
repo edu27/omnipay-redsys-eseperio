@@ -155,7 +155,6 @@ class PurchaseRequest extends AbstractRequest
     }
 
 
-
     /**
      * @return array|mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
@@ -202,10 +201,10 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getAmount()
     {
+
         if ($this->getParameter('multiply')) {
             return strval((float)parent::getAmount() * 100);
         }
-
         return strval((float)parent::getAmount());
     }
 
