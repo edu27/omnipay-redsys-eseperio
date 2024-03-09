@@ -216,6 +216,10 @@ class Gateway extends AbstractGateway
 
         return $response->isSuccessful();
     }
+    public function acceptNotification(array $options = array()): \Omnipay\Common\Message\NotificationInterface
+    {
+
+    }
 
     /**
      * @param Request $request

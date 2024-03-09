@@ -102,6 +102,32 @@ to set the amount as an integer.
 
 ## Receiving the payment response
 
+>Previously, a fake request was created to simulate the response from Redsys, but since Omnipay 3.0, acceptNotification must be used to receive the response from the gateway.
+
+#### New way (acceptNotification)
+
+ ```php
+ $gateway = Omnipay::create('Redsys');
+ $gateway->initialize([
+    'merchantId' => '123456789',
+    'merchantKey' => 'sq7HjrUOBfKmC576ILgskD5srU870gJ7',
+    ...
+ ]);
+ $notification = $gateway->acceptNotification();
+ if ($notification->getTransactionStatus() === NotificationInterface::STATUS_COMPLETED) {
+    // Payment was successful
+   $transactionReference = $notification->getTransactionReference();
+  // Do your stuff here
+ } else {
+   // Payment failed
+ $message = $notification->getMessage();
+ // Do your stuff here
+ }
+ ```
+
+#### Old way (completePurchase)
+
+
 Now, on the route you provided as `merchantUrl` you can receive the response from Redsys:
 
 ```php 

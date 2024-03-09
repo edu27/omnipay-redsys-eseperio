@@ -8,6 +8,7 @@ use Omnipay\Redsys\Exception\BadSignatureException;
 
 /**
  * Redsys Complete Purchase Request
+ * @deprecated since 1.3.0 Use acceptNotification instead, which is more accurate
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {
