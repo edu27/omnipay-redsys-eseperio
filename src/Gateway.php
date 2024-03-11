@@ -107,8 +107,8 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * @deprecated this must be defined in paymentRequest, not in gateway. Only affects to purchase requests
      * @param $consumerLanguage
+     * @deprecated this must be defined in paymentRequest, not in gateway. Only affects to purchase requests
      * @see PurchaseRequest::setConsumerLanguage()
      */
     public function setConsumerLanguage($consumerLanguage)
@@ -187,7 +187,7 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = array())
     {
-            return $this->createRequest('\Omnipay\Redsys\Message\PurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Redsys\Message\PurchaseRequest', $parameters);
     }
 
     /**
@@ -216,9 +216,14 @@ class Gateway extends AbstractGateway
 
         return $response->isSuccessful();
     }
+
+    /**
+     * @param array $options
+     * @return \Omnipay\Common\Message\NotificationInterface
+     */
     public function acceptNotification(array $options = array()): \Omnipay\Common\Message\NotificationInterface
     {
-
+        return new \Omnipay\Redsys\Message\AcceptNotification();
     }
 
     /**
