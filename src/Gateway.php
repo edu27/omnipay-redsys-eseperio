@@ -35,6 +35,7 @@ class Gateway extends AbstractGateway
             'signatureMode' => 'simple',
             'testMode' => false,
             'payMethods' => PayMethods::PAY_METHOD_CARD,
+            'multiply' => true,
         ];
     }
 
