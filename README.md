@@ -28,7 +28,7 @@ Installation
 Via [Composer](http://getcomposer.org/). To install, simply run:
 
 ```sh
-composer require eseperio/omnipay-redsys
+composer require edu27/omnipay-redsys-eseperio
 ```
 
 ### How it works
