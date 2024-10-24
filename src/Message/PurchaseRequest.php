@@ -214,7 +214,17 @@ class PurchaseRequest extends AbstractRequest
     public function getTransactionId()
     {
         if (!empty(parent::getTransactionId())) {
-            return parent::getTransactionId();
+             // @author: edu27 Code modified to have this transactionId with 12 numbers as Redsys requirements
+            $start = substr(parent::getTransactionId(), 0, 12);
+            $numerics = 0;
+            foreach (str_split($start) as $char) {
+                if (is_numeric($char)) {
+                    $numerics++;
+                } else {
+                    break;
+                }
+            }
+            return str_pad(substr($start, 0, $numerics), 12, 0, STR_PAD_LEFT).substr($value, $numerics);;
         }
 
         return parent::getToken();
