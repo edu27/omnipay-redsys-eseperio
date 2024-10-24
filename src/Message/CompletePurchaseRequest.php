@@ -20,10 +20,10 @@ class CompletePurchaseRequest extends PurchaseRequest
     public function getData()
     {
         Log::info('Step 1');
-        $request = Request::createFromGlobals();
+        $request = array_merge($this->httpRequest->query->all(), $this->httpRequest->request->all()); //Request::createFromGlobals();
 Log::info(json_encode($request));
         Log::info('Step 2');
-        $rawParameters = $request->get('Ds_MerchantParameters');
+        $rawParameters = $request['Ds_MerchantParameters'];
 Log::info(json_encode($rawParameters));
          Log::info('Step 3');
         $decodedParameters = json_decode(base64_decode(strtr($rawParameters, '-_', '+/')), true);
@@ -32,7 +32,7 @@ Log::info(json_encode($decodedParameters));
         if (!$this->checkSignature(
             $rawParameters,
             $decodedParameters['Ds_Order'],
-            $request->get('Ds_Signature')
+            $request['Ds_Signature']
         )
         ) {
             Log::info('Step 4 check signature throw');
