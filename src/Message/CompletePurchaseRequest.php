@@ -34,8 +34,8 @@ Log::info(json_encode($decodedParameters));
             $decodedParameters['Ds_Order'],
             $request->get('Ds_Signature')
         )
-            Log::info('Step 4 check signature');
         ) {
+            Log::info('Step 4 check signature throw');
             throw new BadSignatureException();
         }
 Log::info('Step 5');
