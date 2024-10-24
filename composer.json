@@ -1,5 +1,5 @@
 {
-  "name": "eseperio/omnipay-redsys",
+  "name": "edu27/omnipay-redsys-eseperio",
   "description": "Redsys (Credit card + Bizum)  payment gateway for the Omnipay PHP payment processing library",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -17,6 +17,11 @@
       "name": "NitsNets Studio",
       "email": "github@nitsnets.com",
       "homepage": "http://www.nitsnets.com"
+    },
+    {
+      "name": "Eduardo Piñas",
+      "email": "edu@thespringlabs.com",
+      "homepage": "http://www.thespringlabs.com"
     }
   ],
   "minimum-stability": "stable",
